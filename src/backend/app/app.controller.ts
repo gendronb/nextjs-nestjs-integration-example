@@ -1,11 +1,15 @@
 import { Controller, Get } from "@nestjs/common";
 
+import { AppService } from './app.service'
+
 @Controller("randomNumber")
 export class AppController {
 
+  constructor(private appService: AppService) {}
+
   @Get()
   randomNumber() {
-    return Math.random() * 100;
+    return this.appService.createRandomNumber()
   }
-  
+
 }
